@@ -1,0 +1,18 @@
+version: "2.3"
+networks:
+  default:
+    driver: bridge
+
+services:
+  mysql:
+    container_name: teste-mysql
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./teste-inicio.sql:/docker-entrypoint-initdb.d/inicio.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=teste-app
+      - MYSQL_USER=user-app
+      - MYSQL_PASSWORD=senha-teste-app
